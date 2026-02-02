@@ -289,7 +289,7 @@ class IsolationForestDetector:
  raise
 
  def _validate_and_prepare_input(self, X: Union[np.ndarray, pd.DataFrame, pd.Series]) -> Tuple[np.ndarray, Optional[List[str]]]:
- """Validation and input data preparation."""
+ """Validate and prepare input data."""
  feature_names = None
 
  if isinstance(X, pd.DataFrame):
