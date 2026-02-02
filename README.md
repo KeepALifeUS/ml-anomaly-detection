@@ -1,6 +1,6 @@
 # 🚀 ML Anomaly Detection System v5.0
 
-Enterprise-grade anomaly detection system for cryptocurrency trading with Context7 cloud-native architecture.
+Enterprise-grade anomaly detection system for cryptocurrency trading with cloud-native architecture.
 
 ## 🌟 Features
 
@@ -62,22 +62,22 @@ Enterprise-grade anomaly detection system for cryptocurrency trading with Contex
 
 ml-anomaly-detection/
 ├── src/
-│   ├── statistical/        # Statistical detection methods
-│   ├── ml/                 # Machine learning detectors
-│   ├── deep_learning/      # Deep learning models
-│   ├── timeseries/         # Time series specific methods
-│   ├── realtime/           # Real-time processing
-│   ├── crypto/             # Crypto-specific detectors
-│   ├── alerts/             # Alert system
-│   ├── visualization/      # Dashboards and plots
-│   ├── features/           # Feature engineering
-│   ├── evaluation/         # Model evaluation
-│   ├── storage/            # Data persistence
-│   ├── api/                # REST and WebSocket APIs
-│   └── utils/              # Utilities
-├── tests/                  # Comprehensive test suite
-├── docs/                   # Documentation
-└── examples/               # Usage examples
+│ ├── statistical/ # Statistical detection methods
+│ ├── ml/ # Machine learning detectors
+│ ├── deep_learning/ # Deep learning models
+│ ├── timeseries/ # Time series specific methods
+│ ├── realtime/ # Real-time processing
+│ ├── crypto/ # Crypto-specific detectors
+│ ├── alerts/ # Alert system
+│ ├── visualization/ # Dashboards and plots
+│ ├── features/ # Feature engineering
+│ ├── evaluation/ # Model evaluation
+│ ├── storage/ # Data persistence
+│ ├── api/ # REST and WebSocket APIs
+│ └── utils/ # Utilities
+├── tests/ # Comprehensive test suite
+├── docs/ # Documentation
+└── examples/ # Usage examples
 
 ```
 
@@ -98,10 +98,10 @@ pnpm install
 
 ```python
 from ml_anomaly_detection import (
-    ZScoreDetector,
-    IsolationForestDetector,
-    AutoencoderDetector,
-    create_crypto_isolation_forest
+ ZScoreDetector,
+ IsolationForestDetector,
+ AutoencoderDetector,
+ create_crypto_isolation_forest
 )
 import pandas as pd
 
@@ -110,9 +110,9 @@ price_data = pd.read_csv('crypto_prices.csv')
 
 # Quick setup with optimized crypto detector
 detector = create_crypto_isolation_forest(
-    price_data,
-    features=['close', 'volume', 'returns'],
-    contamination=0.05
+ price_data,
+ features=['close', 'volume', 'returns'],
+ contamination=0.05
 )
 
 # Detect anomalies
@@ -128,20 +128,20 @@ is_anomaly, score = detector.detect_realtime({'close': 50000, 'volume': 1000000,
 ```python
 # Statistical ensemble approach
 from ml_anomaly_detection.statistical import (
-    ZScoreDetector, MADDetector, IQRDetector
+ ZScoreDetector, MADDetector, IQRDetector
 )
 
 detectors = [
-    ZScoreDetector(),
-    MADDetector(),
-    IQRDetector()
+ ZScoreDetector,
+ MADDetector,
+ IQRDetector
 ]
 
 ensemble_results = []
 for detector in detectors:
-    detector.fit(price_data[['close', 'volume']])
-    labels, scores = detector.detect(price_data[['close', 'volume']])
-    ensemble_results.append((labels, scores))
+ detector.fit(price_data[['close', 'volume']])
+ labels, scores = detector.detect(price_data[['close', 'volume']])
+ ensemble_results.append((labels, scores))
 
 # Combine results with voting
 final_labels = np.mean([result[0] for result in ensemble_results], axis=0) > 0.5
@@ -152,24 +152,24 @@ final_labels = np.mean([result[0] for result in ensemble_results], axis=0) > 0.5
 
 ```python
 from ml_anomaly_detection.crypto import (
-    PumpDumpDetector,
-    WashTradingDetector,
-    FlashCrashDetector
+ PumpDumpDetector,
+ WashTradingDetector,
+ FlashCrashDetector
 )
 
 # Detect pump and dump schemes
-pump_dump_detector = PumpDumpDetector()
+pump_dump_detector = PumpDumpDetector
 pump_dump_detector.fit(price_data)
 pump_dump_signals = pump_dump_detector.detect(price_data)
 
 # Detect wash trading
-wash_detector = WashTradingDetector()
+wash_detector = WashTradingDetector
 wash_signals = wash_detector.detect(trading_data)
 
 # Detect flash crashes
 flash_detector = FlashCrashDetector(
-    price_threshold=0.1,  # 10% price change
-    time_window=300       # 5 minutes
+ price_threshold=0.1, # 10% price change
+ time_window=300 # 5 minutes
 )
 flash_signals = flash_detector.detect_realtime(price_stream)
 
@@ -198,46 +198,46 @@ export API_PORT=8000
 
 ```yaml
 database:
-  host: localhost
-  port: 5432
-  database: ml-framework_anomalies
-  username: ml-framework
-  password: your_password
+ host: localhost
+ port: 5432
+ database: ml-framework_anomalies
+ username: ml-framework
+ password: your_password
 
 redis:
-  host: localhost
-  port: 6379
-  db: 0
+ host: localhost
+ port: 6379
+ db: 0
 
 api:
-  host: 0.0.0.0
-  port: 8000
-  workers: 4
+ host: 0.0.0.0
+ port: 8000
+ workers: 4
 
 monitoring:
-  enable_prometheus: true
-  prometheus_port: 9090
-  enable_jaeger: true
+ enable_prometheus: true
+ prometheus_port: 9090
+ enable_jaeger: true
 
 crypto:
-  supported_exchanges:
-    - binance
-    - coinbase
-    - kraken
-  default_contamination: 0.05
-  volatility_threshold: 1.0
+ supported_exchanges:
+ - binance
+ - coinbase
+ - kraken
+ default_contamination: 0.05
+ volatility_threshold: 1.0
 
 ```
 
 ## 📊 Performance Benchmarks
 
-| Detector         | Training Time | Inference Time | Memory Usage | Accuracy |
+| Detector | Training Time | Inference Time | Memory Usage | Accuracy |
 | ---------------- | ------------- | -------------- | ------------ | -------- |
-| Z-Score          | < 1ms         | < 0.1ms        | 1MB          | 85%      |
-| Isolation Forest | 2-5s          | 1-3ms          | 50MB         | 92%      |
-| Autoencoder      | 30-60s        | 5-10ms         | 200MB        | 94%      |
-| LSTM Autoencoder | 60-120s       | 10-20ms        | 300MB        | 96%      |
-| VAE              | 45-90s        | 8-15ms         | 250MB        | 93%      |
+| Z-Score | < 1ms | < 0.1ms | 1MB | 85% |
+| Isolation Forest | 2-5s | 1-3ms | 50MB | 92% |
+| Autoencoder | 30-60s | 5-10ms | 200MB | 94% |
+| LSTM Autoencoder | 60-120s | 10-20ms | 300MB | 96% |
+| VAE | 45-90s | 8-15ms | 250MB | 93% |
 
 ## 🔍 Monitoring & Observability
 
@@ -263,12 +263,12 @@ import structlog
 logger = structlog.get_logger(__name__)
 
 logger.info(
-    "Anomaly detected",
-    detector_type="isolation_forest",
-    anomaly_score=0.85,
-    symbol="BTCUSDT",
-    timestamp="2025-01-15T10:30:00Z",
-    severity="high"
+ "Anomaly detected",
+ detector_type="isolation_forest",
+ anomaly_score=0.85,
+ symbol="BTCUSDT",
+ timestamp="2025-01-15T10:30:00Z",
+ severity="high"
 )
 
 ```
@@ -295,26 +295,26 @@ pytest tests/ --cov=src/ --cov-report=html
 # docker-compose.yml
 version: '3.8'
 services:
-  anomaly-detection:
-    build: .
-    ports:
-      - '8000:8000'
-    environment:
-      - DB_HOST=postgres
-      - REDIS_HOST=redis
-    depends_on:
-      - postgres
-      - redis
+ anomaly-detection:
+ build: .
+ ports:
+ - '8000:8000'
+ environment:
+ - DB_HOST=postgres
+ - REDIS_HOST=redis
+ depends_on:
+ - postgres
+ - redis
 
-  postgres:
-    image: postgres:14
-    environment:
-      POSTGRES_DB: ml-framework_anomalies
-      POSTGRES_USER: ml-framework
-      POSTGRES_PASSWORD: password
+ postgres:
+ image: postgres:14
+ environment:
+ POSTGRES_DB: ml-framework_anomalies
+ POSTGRES_USER: ml-framework
+ POSTGRES_PASSWORD: password
 
-  redis:
-    image: redis:7-alpine
+ redis:
+ image: redis:7-alpine
 
 ```
 
@@ -328,9 +328,9 @@ from ml_anomaly_detection import create_crypto_isolation_forest
 
 # Connect to Binance
 exchange = ccxt.binance({
-    'apiKey': 'your_api_key',
-    'secret': 'your_secret',
-    'sandbox': True
+ 'apiKey': 'your_api_key',
+ 'secret': 'your_secret',
+ 'sandbox': True
 })
 
 # Fetch OHLCV data
@@ -342,16 +342,16 @@ detector = create_crypto_isolation_forest(df, contamination=0.03)
 
 # Real-time monitoring
 while True:
-    current_ticker = exchange.fetch_ticker('BTC/USDT')
-    is_anomaly, score = detector.detect_realtime({
-        'close': current_ticker['last'],
-        'volume': current_ticker['quoteVolume']
-    })
+ current_ticker = exchange.fetch_ticker('BTC/USDT')
+ is_anomaly, score = detector.detect_realtime({
+ 'close': current_ticker['last'],
+ 'volume': current_ticker['quoteVolume']
+ })
 
-    if is_anomaly:
-        print(f"🚨 Anomaly detected! Score: {score:.3f}")
+ if is_anomaly:
+ print(f"🚨 Anomaly detected! Score: {score:.3f}")
 
-    time.sleep(60)  # Check every minute
+ time.sleep(60) # Check every minute
 
 ```
 
@@ -367,8 +367,8 @@ uvicorn src.api.rest_api:app --host 0.0.0.0 --port 8000
 # POST /api/v1/detectors/train
 # POST /api/v1/detectors/detect
 # POST /api/v1/detectors/predict
-# GET  /api/v1/detectors/stats
-# GET  /api/v1/health
+# GET /api/v1/detectors/stats
+# GET /api/v1/health
 
 ```
 
@@ -379,21 +379,21 @@ uvicorn src.api.rest_api:app --host 0.0.0.0 --port 8000
 import websockets
 import asyncio
 
-async def anomaly_stream():
-    uri = "ws://localhost:8000/ws/anomalies"
-    async with websockets.connect(uri) as websocket:
-        # Send data for real-time detection
-        await websocket.send(json.dumps({
-            "symbol": "BTCUSDT",
-            "price": 50000,
-            "volume": 1000000,
-            "timestamp": "2025-01-15T10:30:00Z"
-        }))
+async def anomaly_stream:
+ uri = "ws://localhost:8000/ws/anomalies"
+ async with websockets.connect(uri) as websocket:
+ # Send data for real-time detection
+ await websocket.send(json.dumps({
+ "symbol": "BTCUSDT",
+ "price": 50000,
+ "volume": 1000000,
+ "timestamp": "2025-01-15T10:30:00Z"
+ }))
 
-        # Receive anomaly results
-        result = await websocket.recv()
-        anomaly_data = json.loads(result)
-        print(f"Anomaly result: {anomaly_data}")
+ # Receive anomaly results
+ result = await websocket.recv
+ anomaly_data = json.loads(result)
+ print(f"Anomaly result: {anomaly_data}")
 
 ```
 
@@ -445,4 +445,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Built with ❤️ for the ML-Framework Crypto Trading Platform**
 
-_Enterprise-grade anomaly detection powered by Context7 cloud-native architecture_
+_Enterprise-grade anomaly detection powered by cloud-native architecture_

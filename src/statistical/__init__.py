@@ -9,7 +9,7 @@ Implements traditional statistical methods for anomaly detection:
 - Dixon's Q test
 - Tukey's fences method
 
-All detectors follow Context7 enterprise patterns with proper logging,
+All detectors follow enterprise patterns with proper logging,
 monitoring, and error handling.
 """
 
@@ -21,10 +21,10 @@ from .dixon_test import DixonTestDetector
 from .tukey_method import TukeyMethodDetector
 
 __all__ = [
-    "ZScoreDetector",
-    "MADDetector", 
-    "IQRDetector",
-    "GrubbsTestDetector",
-    "DixonTestDetector",
-    "TukeyMethodDetector"
+ "ZScoreDetector",
+ "MADDetector",
+ "IQRDetector",
+ "GrubbsTestDetector",
+ "DixonTestDetector",
+ "TukeyMethodDetector"
 ]

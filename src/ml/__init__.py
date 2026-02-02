@@ -9,7 +9,7 @@ Implements modern ML-based anomaly detection algorithms:
 - LSTM Autoencoder - sequential reconstruction
 - Variational Autoencoder - probabilistic reconstruction
 
-All detectors follow Context7 enterprise patterns with proper model versioning,
+All detectors follow enterprise patterns with proper model versioning,
 monitoring, and distributed processing capabilities.
 """
 
@@ -21,10 +21,10 @@ from .lstm_autoencoder import LSTMAutoencoderDetector
 from .vae_detector import VAEDetector
 
 __all__ = [
-    "IsolationForestDetector",
-    "LocalOutlierFactorDetector",
-    "OneClassSVMDetector",
-    "AutoencoderDetector",
-    "LSTMAutoencoderDetector",
-    "VAEDetector"
+ "IsolationForestDetector",
+ "LocalOutlierFactorDetector",
+ "OneClassSVMDetector",
+ "AutoencoderDetector",
+ "LSTMAutoencoderDetector",
+ "VAEDetector"
 ]

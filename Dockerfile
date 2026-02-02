@@ -2,7 +2,7 @@
 FROM python:3.11-slim
 
 # Metadata
-LABEL maintainer="CTB3 Team <dev@ctb3.io>"
+LABEL maintainer="ML Team"
 LABEL version="5.0.0"
 LABEL description="Enterprise-grade anomaly detection for crypto trading"
 
@@ -13,7 +13,7 @@ ENV API_HOST=0.0.0.0
 ENV API_PORT=8000
 
 # Create non-root user
-RUN groupadd -r ctb3 && useradd -r -g ctb3 ctb3
+RUN groupadd -r mluser && useradd -r -g mluser mluser
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -38,10 +38,10 @@ COPY examples/ ./examples/
 
 # Create directories for data and logs
 RUN mkdir -p /app/data /app/logs && \
-    chown -R ctb3:ctb3 /app
+    chown -R mluser:mluser /app
 
 # Switch to non-root user
-USER ctb3
+USER mluser
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \

@@ -7,7 +7,7 @@ Core utilities for ML anomaly detection system:
 - Input validation
 - Performance profiling
 
-Context7 Features:
+Features:
 - Enterprise configuration patterns
 - Structured logging with OpenTelemetry
 - Comprehensive validation
