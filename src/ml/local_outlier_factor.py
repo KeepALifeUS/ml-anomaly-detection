@@ -79,7 +79,7 @@ class LocalOutlierFactorDetector:
  if self.config.auto_k_optimization:
  self._optimize_k(X_scaled)
 
- # Creating and training model
+ # Create and train the model
  self.model = LocalOutlierFactor(
  n_neighbors=self._optimal_k or self.config.n_neighbors,
  algorithm=self.config.algorithm,

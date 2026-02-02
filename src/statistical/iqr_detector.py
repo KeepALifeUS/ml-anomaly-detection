@@ -34,7 +34,7 @@ class IQRConfig:
  window_size: Optional[int] = None
  rolling_window: bool = False
  min_samples: int = 20
- bilateral: bool = True # True = check both directionss
+ bilateral: bool = True # True = check both directions
  auto_k_factor: bool = False # Automatically tune k
  contamination: float = 0.1
  quantile_method: str = 'linear' # Quantile interpolation method
@@ -47,7 +47,7 @@ class IQRDetector:
  - Q1 (25th percentile)
  - Q3 (75th percentile)
  - IQR = Q3 - Q1
- - Anomalies: values beyond bounds [Q1 - k*IQR, Q3 + k*IQR]
+ - Anomalies: values outside [Q1 - k*IQR, Q3 + k*IQR]
 
  Features:
  - Simple and interpretable
