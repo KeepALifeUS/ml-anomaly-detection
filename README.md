@@ -446,3 +446,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Built with ❤️ for the ML-Framework Crypto Trading Platform**
 
 _Enterprise-grade anomaly detection powered by cloud-native architecture_
+
+## Support
+
+For questions and support, please open an issue on GitHub.
